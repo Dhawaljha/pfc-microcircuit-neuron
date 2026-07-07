@@ -15,7 +15,7 @@ print(f"Running PFC microcircuit in condition: {condition}")
 # Load basic NEURON stuff & templates
 # -----------------------------
 h.load_file("stdrun.hoc")
-h.load_file("glutamatergic.hoc")   # your pyramidal cell template
+h.load_file("glu_neuron.hoc")   # your pyramidal cell template
 # (we don't strictly need dopa/chol here, this is standalone PFC)
 
 # -----------------------------
