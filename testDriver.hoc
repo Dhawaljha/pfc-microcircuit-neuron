@@ -1,0 +1,96 @@
+load_file("nrngui.hoc")
+load_file("dopa_neuron.hoc")
+
+
+objref dopa
+dopa = new dopaminergic()
+
+
+
+//------------------------------Plotting the graphs---------------------------------
+
+
+objectvar g[20]
+ngraph = 0
+proc addgraph() { local ii
+  ngraph = ngraph + 1
+  ii = ngraph -1
+  g[ii] = new Graph()
+ 
+  g[ii].size (0, tstop, -90, 80)
+  g[ii].xaxis()
+  g[ii].yaxis()
+  g[ii].addvar($s1,$2,$3)
+  
+  g[ii].save_name("graphList[0].")
+  graphList[0].append(g[ii])
+  
+    
+}
+
+if(ismenu==0) {
+  nrnmainmenu()         // create main menu
+  nrncontrolmenu()      // create control menu
+  ismenu=1
+}
+
+
+//------------------------------RECEPTORS-----------------------------------------------
+/*
+objectvar posta4b2[500]
+for d = 0, 15{
+   for r = 0,116{
+     posta4b2[r] = new a4b2()
+     dopa.dend[d] posta4b2[r].loc(0.9)
+     setpointer prea3b4c[r].C_in, chol.axon[a].T_rel
+  }
+} 
+
+objectvar prea7[1000], pre1a7[1000]
+for r = 0,419{
+  prea7[r] = new a7()
+  dopa.soma prea7[r].loc(0.9)
+  setpointer prea7[r].C, chol.axon.T_rel
+}
+
+for d = 0, 15{
+	for r = 0, 419{
+		  pre1a7[r] = new a7()
+ 		  dopa.dend[d] pre1a7[r].loc(0.5)
+ 		  setpointer pre1a7[r].C, chol.axon.T_rel
+		}
+}
+
+objectvar prea4b2[1000], pre1a4b2[1000]
+for r = 0, 419{
+  prea4b2[r] = new a4b2()
+  dopa.soma prea4b2[r].loc(0.9)
+  setpointer prea4b2[r].C, chol.axon.T_rel
+}
+
+*/
+
+
+//-----------------------------GENERAL PARAMETERS--------------------------------------------
+
+dt=0.025
+v_init = -65
+celsius = 37
+tstop = 6000
+
+
+//-----------------------------ADD GRAPHS----------------------------------------------
+addgraph("dopa.soma.v(0.5)", 2, 1)
+
+
+
+//------------------------------------------------------------------------------------------
+
+  
+
+
+
+
+
+
+
